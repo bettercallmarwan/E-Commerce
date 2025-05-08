@@ -6,6 +6,9 @@ namespace DomainLayer.Contracts
     public interface ISpecifications<TEntity, TKey> where TEntity : BaseEntity<TKey>
     {
         public Expression<Func<TEntity, bool>>? Criteria { get; }
-        List<Expression<Func<TEntity, object>>> IncludeExpressions { get; }
+        public List<Expression<Func<TEntity, object>>> IncludeExpressions { get; }
+
+        public Expression<Func<TEntity, object>> OrderBy { get; }
+        public Expression<Func<TEntity, object>> OrderByDescending { get; }
     }
 }
