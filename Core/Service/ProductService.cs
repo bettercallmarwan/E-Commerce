@@ -5,6 +5,7 @@ using Service.Specifications;
 using ServiceAbstraction;
 using Shared.DataTransferObject;
 using Shared;
+using DomainLayer.Exceptions;
 
 namespace Service
 {
@@ -44,6 +45,11 @@ namespace Service
             var Specifications = new ProductWithBrandAndTypeSpecification(Id);
 
             var Product = await _unitOfWork.GetRepository<Product, int>().GetByIdAsync(Specifications);
+
+            if (Product is null)
+            {
+                throw new ProductNotFoundException(Id);
+            }
             return _mapper.Map<Product, ProductDto>(Product);
 
         }
