@@ -7,6 +7,7 @@ using Persistence.Repositories;
 using Service;
 using Service.MappingProfiles;
 using ServiceAbstraction;
+using E_Commerce.Web.CustomMiddleWares;
 
 namespace E_Commerce.Web
 {
@@ -41,6 +42,7 @@ namespace E_Commerce.Web
             await ObjectOfDataSeeding.DataSeedAsync();
 
             #region Configure the HTTP request pipeline
+            app.UseMiddleware<CustomExceptionHandlerMiddleWare>();
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
