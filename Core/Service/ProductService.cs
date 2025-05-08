@@ -33,7 +33,7 @@ namespace Service
             var TypesDto = _mapper.Map<IEnumerable<ProductType>, IEnumerable<TypeDto>>(Types);
 
             return TypesDto;
-        }
+        }  
 
         public async Task<ProductDto> GetProductByIdAsync(int Id)
         {
