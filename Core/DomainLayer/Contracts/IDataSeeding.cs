@@ -11,4 +11,4 @@ namespace DomainLayer.Contracts
         Task DataSeedAsync();
     }
 }
-      
+         
